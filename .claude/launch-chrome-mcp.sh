@@ -34,10 +34,17 @@ fi
 PROXY_ARG=""
 [ -n "$PROXY" ] && PROXY_ARG="--proxyServer=$PROXY"
 
+# --disable-quic: QUIC (HTTP/3) runs over UDP and cannot traverse the proxy's
+#   HTTP CONNECT (TCP) tunnel, causing ERR_CONNECTION_CLOSED on HTTP/3-capable
+#   sites (many CDNs). Forcing TCP/TLS routes cleanly through the proxy.
+# --disable-features: ECH/HTTPS-SVCB DNS hints can also break through the MITM.
+
 exec npx -y chrome-devtools-mcp@latest \
   --executablePath=/opt/pw-browsers/chromium \
   --headless --isolated \
   $PROXY_ARG \
   --chromeArg=--no-sandbox \
   --chromeArg=--disable-dev-shm-usage \
-  --chromeArg=--disable-gpu
+  --chromeArg=--disable-gpu \
+  --chromeArg=--disable-quic \
+  --chromeArg=--disable-features=UseDnsHttpsSvcb,EncryptedClientHello
