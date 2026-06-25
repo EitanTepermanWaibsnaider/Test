@@ -2,8 +2,11 @@
   "mcpServers": {
     "chrome-devtools": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest", "--executable-path=/opt/pw-browsers/chromium"],
+      "command": "bash",
+      "args": [
+        "-c",
+        "proxy_arg=\"\"; [ -n \"$HTTPS_PROXY\" ] && proxy_arg=\"--proxyServer=$HTTPS_PROXY\"; exec npx -y chrome-devtools-mcp@latest --executablePath=/opt/pw-browsers/chromium --headless --isolated $proxy_arg --chromeArg=--no-sandbox --chromeArg=--disable-dev-shm-usage --chromeArg=--disable-gpu"
+      ],
       "alwaysLoad": true
     }
   }

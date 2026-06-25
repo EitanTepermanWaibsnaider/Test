@@ -1,15 +1,1 @@
-{
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/opt/pw-browsers/chromium --remote-debugging-port=9222 --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage > /tmp/chromium.log 2>&1 & sleep 3"
-          }
-        ]
-      }
-    ]
-  }
-}
+{}
