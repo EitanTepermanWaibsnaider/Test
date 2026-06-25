@@ -1,15 +1,1 @@
-{
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "chromium --remote-debugging-port=9222 --headless=new --no-sandbox --disable-gpu &"
-          }
-        ]
-      }
-    ]
-  }
-}
+{}
