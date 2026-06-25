@@ -3,11 +3,8 @@
     "chrome-devtools": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"],
-      "alwaysLoad": true,
-      "env": {
-        "CHROME_PATH": "/opt/pw-browsers/chromium"
-      }
+      "args": ["-y", "chrome-devtools-mcp@latest", "--executable-path=/opt/pw-browsers/chromium"],
+      "alwaysLoad": true
     }
   }
 }
