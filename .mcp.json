@@ -3,10 +3,7 @@
     "chrome-devtools": {
       "type": "stdio",
       "command": "bash",
-      "args": [
-        "-c",
-        "proxy_arg=\"\"; [ -n \"$HTTPS_PROXY\" ] && proxy_arg=\"--proxyServer=$HTTPS_PROXY\"; exec npx -y chrome-devtools-mcp@latest --executablePath=/opt/pw-browsers/chromium --headless --isolated $proxy_arg --chromeArg=--no-sandbox --chromeArg=--disable-dev-shm-usage --chromeArg=--disable-gpu"
-      ],
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/.claude/launch-chrome-mcp.sh"],
       "alwaysLoad": true
     }
   }
